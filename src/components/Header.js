@@ -20,7 +20,7 @@ const Header = () => {
                 </div>
             </div> 
 
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-8'>
                 <div className='text-3xl cursor-pointer '>
                      <FaCircleUser/>
                 </div>
@@ -30,8 +30,13 @@ const Header = () => {
                         <pa className="text-sm">0</pa>
                      </div>
                 </div>
+                <div>
+                <button className='px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700'>Login</button>
+                </div> 
                  
-            </div>         
+            </div>  
+
+                  
         </div>
     </header>
   )
