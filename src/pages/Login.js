@@ -5,7 +5,6 @@ import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom'; 
 
 
-
 const Login = () => { //Login component
   const [showpassword,setshowpassword] = useState(false)
   const [data,setdata] = useState({ //state to store email and password
@@ -40,7 +39,7 @@ const Login = () => { //Login component
                     <img src={loginIcons} alt='Image-Icon'/>
                 </div>
 
-                <form className='pt-6' onSubmit={handleSumbit}>
+                <form className='pt-6 flex flex-col gap-4' onSubmit={handleSumbit}>
 
                   <div className='grid'>
                     <label>Email :</label>
