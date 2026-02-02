@@ -1,0 +1,11 @@
+[33m16fa682[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: commit: fix(signup:
+[33m9dd52d5[m HEAD@{1}: commit: feat(profile):enable profile picture upload
+[33m16fc36e[m HEAD@{2}: commit: signin implementation
+[33m3137cf8[m HEAD@{3}: commit: footer implementation
+[33m202538b[m HEAD@{4}: commit: state to store email and password
+[33mb37ebd2[m HEAD@{5}: commit: implement of signup
+[33m0779ad8[m HEAD@{6}: commit: implementation of header
+[33m3e94d28[m HEAD@{7}: commit: cart and search implemenation
+[33mb99457f[m HEAD@{8}: commit: implementation of header and footer
+[33m33484c3[m HEAD@{9}: commit: implementation of header and footer
+[33mebf5cb3[m HEAD@{10}: commit (initial): Initialize project using Create React App
