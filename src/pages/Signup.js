@@ -73,6 +73,7 @@ import imagetobase64 from '../helper/imagetobase64';
                       <input type='text'
                              placeholder='enter name' 
                              className='w-full h-full outline-none bg-transparent' 
+                             required
                              name='name' 
                              value={data.name}
                              onChange={handleOnChange}/>
@@ -86,6 +87,7 @@ import imagetobase64 from '../helper/imagetobase64';
                              placeholder='enter email' 
                              className='w-full h-full outline-none bg-transparent' 
                              name='email' 
+                             required
                              value={data.email}
                              onChange={handleOnChange}/>
                     </div>
@@ -99,6 +101,7 @@ import imagetobase64 from '../helper/imagetobase64';
                               placeholder='enter password' 
                               className='w-full h-full outline-none bg-transparent'
                               name='password'
+                              required
                               value={data.password}
                               onChange={handleOnChange}/>
                               
@@ -129,6 +132,7 @@ import imagetobase64 from '../helper/imagetobase64';
                               placeholder='enter conform password' 
                               className='w-full h-full outline-none bg-transparent'
                               name='conformpassword'
+                              required
                               value={data.conformpassword}
                               onChange={handleOnChange}/>
                               
