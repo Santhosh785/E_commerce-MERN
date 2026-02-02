@@ -3,6 +3,7 @@ import loginIcons from '../assest/signin.gif'
 import { IoEyeSharp } from "react-icons/io5"; 
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom';        
+import imagetobase64 from '../helper/imagetobase64';
 
     const Signup = () => { //Login component
       const [showpassword,setshowpassword] = useState(false)
@@ -30,6 +31,19 @@ import { Link } from 'react-router-dom';
       const handleSumbit = (e)=>{
         e.preventDefault();  //to prevent reloading the page
       }
+
+      const handleuploadPic = async(e)=>{    //to handle image upload
+        const file = e.target.files[0];
+
+        const imagePic = await imagetobase64(file);//calling imagetobase64 function to convert image to base64 format
+        console.log(imagePic);
+        setdata((prev)=>{   //updating state
+          return {
+            ...prev,
+            profilepic : imagePic //storing base64 string in profilepic state
+          }
+        })
+      }
     
       console.log(data); 
     
@@ -38,8 +52,18 @@ import { Link } from 'react-router-dom';
         <div className='mx-auto container p-4'>
 
             <div className='bg-white p-5 w-full max-w-md mx-auto'>
-                <div className='w-20 h-20 mx-auto '>
-                    <img src={loginIcons} alt='Image-Icon'/>
+                <div className='w-20 h-20 mx-auto relative overflow-hidden rounded-full'>
+                    <div>
+                        <img src={data.profilepic || loginIcons} alt='Image-Icon'/>
+                    </div>
+                    <form>
+                         <label>
+                             <div className='text-xs bg-opacity-80 bg-slate-200 pb-4 pt-2 cursor-pointer text-center absolute bottom-0 left-0 right-0' >
+                             upload Photo
+                            </div>
+                             <input type='file' className='hidden' onChange={handleuploadPic}/>
+                        </label>                            
+                    </form>                  
                 </div>
 
                 <form className='pt-6 flex flex-col gap-6' onSubmit={handleSumbit}>
