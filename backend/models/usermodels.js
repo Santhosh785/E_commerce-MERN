@@ -1,5 +1,6 @@
 const mangoose = require("mongoose")
 
+
 const userSchema = new mangoose.Schema({
     
     name : String,
@@ -18,4 +19,4 @@ const userSchema = new mangoose.Schema({
 
 const userModel = mangoose.model("user",userSchema)
 
-model.exports = userModel
+module.exports = userModel

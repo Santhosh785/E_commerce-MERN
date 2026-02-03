@@ -1,10 +1,14 @@
 const userModel = require("../models/usermodels")
+const bcrypt = require('bcryptjs');
+
 
 async function userSignUpController(req,res){
 
     try{
 
         const {email,password, name } = req.body 
+
+        console.log(req.body)
         
         if(!email){
             throw new Error("Please provide the Email")
@@ -16,7 +20,28 @@ async function userSignUpController(req,res){
             throw new Error("Please provide the name")
         }
 
-        const userData = new userModel(req.body)
+        const salt = bcrypt.genSaltSync(10);
+        const hashPassword = bcrypt.hashSync(password, salt);
+
+        if (!hashPassword){
+            throw new Error("Error in password hashing")
+        }
+
+        const payload = { 
+            ...req.body,
+            password: hashPassword
+        }
+
+        const userData = new userModel(payload)
+        const savedUser = await userData.save()
+
+        res.status(201).json({
+            message:"User signed up successfully",
+            data:savedUser,
+            error:false,
+            success:true,
+        })
+
 
 
     }catch(err){
@@ -29,3 +54,5 @@ async function userSignUpController(req,res){
 
     }
 }
+
+module.exports = {userSignUpController}
