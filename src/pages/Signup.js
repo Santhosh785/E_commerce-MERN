@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import  summaryAPI  from '../common/index.js';
 import loginIcons from '../assest/signin.gif'
 import { IoEyeSharp } from "react-icons/io5"; 
 import { FaEyeSlash } from "react-icons/fa";
@@ -28,11 +29,37 @@ import imagetobase64 from '../helper/imagetobase64';
         })
       }
     
-      const handleSumbit = (e)=>{
+      const handleSumbit = async(e)=>{
         e.preventDefault();  //to prevent reloading the page
+
+        if (data.password === data.conformpassword){
+
+         const dataResponse = await fetch(summaryAPI.signup.url,{  
+          method:summaryAPI.signup.method,
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify(data)
+        })
+
+        const resData = await dataResponse.json(); //
+        console.log(resData);
+
+        if(resData.success){
+          alert(resData.message);
+        }else{
+          alert(resData.message);
+        } 
+      }
+      else{
+          console.log("Password and conform password should be same");
+          alert("Password and conform password should be same");     
+      }
       }
 
-      const handleuploadPic = async(e)=>{    //to handle image upload
+        
+
+        const handleuploadPic = async(e)=>{    //to handle image upload
         const file = e.target.files[0];
 
         const imagePic = await imagetobase64(file);//calling imagetobase64 function to convert image to base64 format
