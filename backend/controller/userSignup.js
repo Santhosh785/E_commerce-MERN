@@ -51,8 +51,9 @@ async function userSignUpController(req,res){
 
 
     }catch(err){
+        
         res.json({
-            message:err,
+            message:err.message || "User already exists with this email",
             error:true,
             success:false,
         })
