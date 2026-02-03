@@ -9,6 +9,12 @@ async function userSignUpController(req,res){
         const {email,password, name } = req.body 
 
         console.log(req.body)
+
+        const user = await userModel.findOne({email:email})
+        
+        if(user){
+            throw new Error("User already exists with this email")
+        } 
         
         if(!email){
             throw new Error("Please provide the Email")
