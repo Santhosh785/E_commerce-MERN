@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import  summaryAPI  from '../common/index.js';
 import loginIcons from '../assest/signin.gif'
 import { IoEyeSharp } from "react-icons/io5"; 
 import { FaEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router-dom';        
+import { Link, useNavigate } from 'react-router-dom';        
 import imagetobase64 from '../helper/imagetobase64';
 import { FaTowerBroadcast } from 'react-icons/fa6';
 import { toast } from 'react-toastify';
@@ -19,6 +19,8 @@ import { toast } from 'react-toastify';
         profilepic : ""
 
       })
+
+      const navigate = useNavigate(); //to navigate to other pages 
     
       const handleOnChange = (e)=>{  //to handle input changes
         const {name,value} = e.target; // destructuring
@@ -49,6 +51,7 @@ import { toast } from 'react-toastify';
 
         if(resData.success){
           toast.success(resData.message);
+          navigate('/login');
         }else{
           toast.error(resData.message);
         } 
