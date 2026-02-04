@@ -5,7 +5,6 @@ import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';        
 import imagetobase64 from '../helper/imagetobase64';
-import { FaTowerBroadcast } from 'react-icons/fa6';
 import { toast } from 'react-toastify';
 
     const Signup = () => { //Login component

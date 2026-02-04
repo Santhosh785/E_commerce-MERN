@@ -3,6 +3,10 @@ import loginIcons from '../assest/signin.gif'
 import { IoEyeSharp } from "react-icons/io5"; 
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom'; 
+import summaryAPI from '../common';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = () => { //Login component
@@ -11,6 +15,9 @@ const Login = () => { //Login component
     email : "",
     password : ""
   })
+
+  const navigate = useNavigate(); //to navigate to other pages
+  
 
   const handleOnChange = (e)=>{  //to handle input changes
     const {name,value} = e.target; // destructuring
@@ -23,8 +30,26 @@ const Login = () => { //Login component
     })
   }
 
-  const handleSumbit = (e)=>{
+  const handleSumbit = async(e)=>{
     e.preventDefault();  //to prevent reloading the page
+
+    const dataResponse = await fetch(summaryAPI.signin.url,{
+      method :summaryAPI.signin.method,
+      credentials : 'include', // to include cookies in the request
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data)  //converting data to JSON string
+    })
+    const dataAPI = await dataResponse.json(); //parsing JSON response
+
+    if (dataAPI.success){
+      toast.success("Login Successful");
+      navigate('/');
+      // Further actions on successful login can be added here
+    } else {
+      toast.error(`Login Failed: ${dataAPI.message}`);
+    }
   }
 
   console.log(data); 
