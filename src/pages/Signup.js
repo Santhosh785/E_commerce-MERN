@@ -5,6 +5,8 @@ import { IoEyeSharp } from "react-icons/io5";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom';        
 import imagetobase64 from '../helper/imagetobase64';
+import { FaTowerBroadcast } from 'react-icons/fa6';
+import { toast } from 'react-toastify';
 
     const Signup = () => { //Login component
       const [showpassword,setshowpassword] = useState(false)
@@ -46,14 +48,13 @@ import imagetobase64 from '../helper/imagetobase64';
         console.log(resData);
 
         if(resData.success){
-          alert(resData.message);
+          toast.success(resData.message);
         }else{
-          alert(resData.message);
+          toast.error(resData.message);
         } 
       }
       else{
           console.log("Password and conform password should be same");
-          alert("Password and conform password should be same");     
       }
       }
 
