@@ -1,15 +1,13 @@
-
-
+const userModel = require("../models/usermodels")
 async function userDetailsController(req, res) {
 
     try{
-
         console.log("User ID:", req.userId);
-        
-        console.log("Fetching user details for user ID:", req.userId); // Debugging log
+        const user = await userModel.findById(req.userId);
+
         res.status(200).json({
             message: "User details fetched successfully",
-            data: req.userId,
+            data: user,
             error:false,
             success:true
         })
