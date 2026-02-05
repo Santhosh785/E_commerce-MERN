@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import loginIcons from '../assest/signin.gif'
 import { IoEyeSharp } from "react-icons/io5"; 
 import { FaEyeSlash } from "react-icons/fa";
@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 import summaryAPI from '../common';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import Context from '../context/context';
+ 
 
 
 
-const Login = () => { //Login component
+const Login = () => {                 //Login component
   const [showpassword,setshowpassword] = useState(false)
   const [data,setdata] = useState({ //state to store email and password
     email : "",
@@ -17,7 +20,8 @@ const Login = () => { //Login component
   })
 
   const navigate = useNavigate(); //to navigate to other pages
-  
+  const {fetchUserDetails} = useContext(Context); // Destructure fetchUserDetails from context
+
 
   const handleOnChange = (e)=>{  //to handle input changes
     const {name,value} = e.target; // destructuring
@@ -46,6 +50,8 @@ const Login = () => { //Login component
     if (dataAPI.success){
       toast.success("Login Successful");
       navigate('/');
+      fetchUserDetails();            // Call the fetchUserDetails function from context
+
       // Further actions on successful login can be added here
     } else {
       toast.error(`Login Failed: ${dataAPI.message}`);
