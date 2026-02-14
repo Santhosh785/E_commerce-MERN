@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
 
-    // const user = useSelector((state) => state.user.user); // Access user details from Redux store4
-    // console.log("User details in Header:", user); // Debugging log
+    const user = useSelector(state => state?.user?.user); // Access user details from Redux store
+    console.log("User details in Header:", user); // Debugging log
 
   return (  
     <header className='h-16 shadow-md bg-white  w-full z-40'>
@@ -31,7 +31,13 @@ const Header = () => {
 
             <div className='flex items-center gap-8'>
                 <div className='text-3xl cursor-pointer '>
-                     <FaCircleUser/>
+                    {
+                        user?.profilepic? (
+                            <img src={user?.profilepic} alt="Profile" className='w-10 h-10 rounded-full object-cover' />
+                        ) : (   
+                                <FaCircleUser/>
+                        )
+                    }
                 </div>
                 <div className='text-2xl relative '>
                      <span><RiShoppingCart2Fill /></span>

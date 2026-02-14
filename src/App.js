@@ -22,9 +22,12 @@ function App() {
 
       const dataAPI = await dataresponse.json();
 
+      console.log("User details response:", dataAPI);
+
+
       if (dataAPI.success) {
 
-        dispatch(setUserDetails(dataAPI.user)); // Dispatch user details to Redux store
+        dispatch(setUserDetails(dataAPI.data)); // Dispatch user details to Redux store
         console.log("User details fetched successfully:", dataAPI);
         // You can also dispatch the user details to the Redux store here if needed
       } else {
