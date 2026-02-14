@@ -8,11 +8,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import summaryAPI from '../common';
 import { toast } from 'react-toastify';
 import { setUserDetails } from '../stores/userSlice';
+import { useState } from 'react';
 
 const Header = () => {
 
   const user = useSelector(state => state?.user?.user);
   const dispatch = useDispatch();
+  const [menuDisplay,setMenuDisplay] = useState(false);
 
   console.log("User details in Header:", user);
 
@@ -31,9 +33,7 @@ const Header = () => {
         return;
       }
 
-      toast.success(data.message || "Logout successful");
-
-      
+      toast.success(data.message || "Logout successful")      
       dispatch(setUserDetails(null));  // Clear user details from Redux store on logout
 
     } catch (error) {
@@ -59,7 +59,8 @@ const Header = () => {
 
         <div className='flex items-center gap-8'>
 
-          <div className='text-3xl cursor-pointer'>
+         <div className='relative group flex justify-center' >
+             <div className='text-3xl cursor-pointer relative flex items-center justify-center' onClick={() => setMenuDisplay(!menuDisplay)}>
             {
               user?.profilepic ? (
                 <img 
@@ -72,6 +73,19 @@ const Header = () => {
               )
             }
           </div>
+          {
+            menuDisplay && (  
+                
+            <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded-lg'>
+               <nav>
+                <Link to ={"/adminpanel"} className='whitespace-nowrap hover:bg-gray-100 p-2 '>Admin Panel</Link> 
+              </nav>
+            </div>
+
+            )
+          }
+         
+         </div>
 
           <div className='text-2xl relative'>
             <RiShoppingCart2Fill />
