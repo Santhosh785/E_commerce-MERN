@@ -33,7 +33,9 @@ const Header = () => {
                 <div className='text-3xl cursor-pointer '>
                     {
                         user?.profilepic? (
-                            <img src={user?.profilepic} alt="Profile" className='w-10 h-10 rounded-full object-cover' />
+                            <img src={user?.profilepic} 
+                            alt={user?.name} 
+                            className='w-10 h-10 rounded-full object-cover' />
                         ) : (   
                                 <FaCircleUser/>
                         )
