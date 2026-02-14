@@ -4,9 +4,14 @@ import { CiSearch } from "react-icons/ci";
 import { FaCircleUser } from "react-icons/fa6";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+
+    // const user = useSelector((state) => state.user.user); // Access user details from Redux store4
+    // console.log("User details in Header:", user); // Debugging log
+
   return (  
     <header className='h-16 shadow-md bg-white  w-full z-40'>
         <div className='h-full container mx-auto flex items-center px-4 justify-between'>
