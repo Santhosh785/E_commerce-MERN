@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { setUserDetails } from '../stores/userSlice';
 import { useState } from 'react';
 
+
 const Header = () => {
 
   const user = useSelector(state => state?.user?.user);
@@ -78,7 +79,7 @@ const Header = () => {
                 
             <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded-lg'>
                <nav>
-                <Link to ={"/adminpanel"} className='whitespace-nowrap hover:bg-gray-100 p-2 '>Admin Panel</Link> 
+                <Link to ={"/admin-panel"} className='whitespace-nowrap hover:bg-gray-100 p-2 'onClick={() => setMenuDisplay(!menuDisplay)}>Admin Panel</Link> 
               </nav>
             </div>
 
