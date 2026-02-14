@@ -34,7 +34,8 @@ async function userSignUpController(req,res){
         }
 
         const payload = { 
-            ...req.body,
+            email,
+            name,
             role: "GENERAL",
             password: hashPassword
         }

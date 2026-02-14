@@ -10,7 +10,12 @@ const userSchema = new mangoose.Schema({
         required : true
     },
     password : String,
-    profilepic : String
+    profilepic : String,
+    role : {
+        type : String,  
+        enum : ["GENERAL","ADMIN"],
+        default : "GENERAL"
+    }
 
 },{
     timestamps : true
