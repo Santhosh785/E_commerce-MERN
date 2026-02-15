@@ -22,8 +22,6 @@ function App() {
 
       const dataAPI = await dataresponse.json();
 
-      console.log("User details response:", dataAPI);
-
 
       if (dataAPI.success) {
 
@@ -37,7 +35,7 @@ function App() {
       console.log("User details response:", dataAPI); // Debugging log
     } 
 
- useEffect (() => {
+ useEffect (() => { 
 
       fetchUserDetails();
 

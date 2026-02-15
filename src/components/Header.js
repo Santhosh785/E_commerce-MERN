@@ -17,7 +17,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const [menuDisplay,setMenuDisplay] = useState(false);
 
-  console.log("User details in Header:", user);
 
   const handleLogout = async () => {
     try {
@@ -77,9 +76,9 @@ const Header = () => {
           {
             menuDisplay && (  
                 
-            <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded-lg'>
+            <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded'>
                <nav>
-                <Link to ={"/admin-panel"} className='whitespace-nowrap hover:bg-gray-100 p-2 'onClick={() => setMenuDisplay(!menuDisplay)}>Admin Panel</Link> 
+                <Link to ={"/admin-panel"} className='whitespace-nowrap hover:bg-gray-100 p-2 hidden md:block 'onClick={() => setMenuDisplay(!menuDisplay)}>Admin Panel</Link> 
               </nav>
             </div>
 

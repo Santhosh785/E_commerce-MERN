@@ -8,7 +8,7 @@ const Adminpanel = () => {
   const user = useSelector((state) => state?.user?.user);
 
   return (
-    <div className="min-h-[calc(90vh-100px)] flex">
+    <div className="min-h-[calc(90vh-100px)] hidden md:flex">
       {/* Sidebar */}
       <aside className="bg-white min-h-full w-full max-w-60 shadow-md">
         <div className="h-32 flex justify-center items-center flex-col">
@@ -37,7 +37,7 @@ const Adminpanel = () => {
       </aside>
 
       {/* Main content */}
-      <main>
+      <main className="w-full h-full p-2">
         <Outlet />
       </main>
     </div>
