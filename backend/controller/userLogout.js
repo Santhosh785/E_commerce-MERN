@@ -1,22 +1,23 @@
 async function userLogout(req, res) {
 
-    try{
+    try {
 
         res.clearCookie("token");
-        res.json({
-            message:"User logged out successfully",
-            error:false,
-            success:true,
-            data : []
+        res.status(200).json({
+            message: "User logged out successfully",
+            error: false,
+            success: true,
+            data: []
         })
 
     }
-    catch(error){
-        res.json({
-            message:error.message || "Error logging out user",
-            error:true,
-            success:false,
-        })  
-    }}
+    catch (error) {
+        res.status(400).json({
+            message: error.message || error,
+            error: true,
+            success: false,
+        })
+    }
+}
 
-module.exports = {userLogout};
+module.exports = { userLogout };

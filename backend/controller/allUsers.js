@@ -2,11 +2,9 @@ const userModel = require('../models/usermodels');
 
 async function allUsersControllers(req, res) {
   try {
-    console.log("userID:", req.userId);
-
     const allUsers = await userModel.find()
 
-    res.json({
+    res.status(200).json({
       message: "All users fetched successfully",
       error: false,
       success: true,
@@ -22,4 +20,4 @@ async function allUsersControllers(req, res) {
   }
 }
 
-module.exports = allUsersControllers ;
+module.exports = { allUsersControllers };

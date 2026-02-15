@@ -1,27 +1,27 @@
-const mangoose = require("mongoose")
+const mongoose = require("mongoose")
 
 
-const userSchema = new mangoose.Schema({
-    
-    name : String,
-    email : { 
-        type : String,
-        unique : true,
-        required : true
+const userSchema = new mongoose.Schema({
+
+    name: String,
+    email: {
+        type: String,
+        unique: true,
+        required: true
     },
-    password : String,
-    profilepic : String,
-    role : {
-        type : String,  
-        enum : ["GENERAL","ADMIN"],
-        default : "GENERAL"
+    password: String,
+    profilepic: String,
+    role: {
+        type: String,
+        enum: ["GENERAL", "ADMIN"],
+        default: "GENERAL"
     }
 
-},{
-    timestamps : true
+}, {
+    timestamps: true
 })
 
 
-const userModel = mangoose.model("user",userSchema)
+const userModel = mongoose.model("user", userSchema)
 
 module.exports = userModel

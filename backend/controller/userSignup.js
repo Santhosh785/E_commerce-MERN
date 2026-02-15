@@ -2,38 +2,38 @@ const userModel = require("../models/usermodels")
 const bcrypt = require('bcryptjs');
 
 
-async function userSignUpController(req,res){
+async function userSignUpController(req, res) {
 
-    try{
+    try {
 
-        const {email,password, name } = req.body 
+        const { email, password, name } = req.body
 
         console.log(req.body)
 
-        const user = await userModel.findOne({email:email})
-        
-        if(user){
+        const user = await userModel.findOne({ email: email })
+
+        if (user) {
             throw new Error("User already exists with this email")
-        } 
-        
-        if(!email){
+        }
+
+        if (!email) {
             throw new Error("Please provide the Email")
         }
-        if(!password){
+        if (!password) {
             throw new Error("Please provide the password")
         }
-        if(!name){
+        if (!name) {
             throw new Error("Please provide the name")
         }
 
         const salt = bcrypt.genSaltSync(10);
         const hashPassword = bcrypt.hashSync(password, salt);
 
-        if (!hashPassword){
+        if (!hashPassword) {
             throw new Error("Error in password hashing")
         }
 
-        const payload = { 
+        const payload = {
             email,
             name,
             role: "GENERAL",
@@ -44,24 +44,21 @@ async function userSignUpController(req,res){
         const savedUser = await userData.save()
 
         res.status(201).json({
-            message:"User signed up successfully",
-            data:savedUser,
-            error:false,
-            success:true,
+            message: "User signed up successfully",
+            data: savedUser,
+            error: false,
+            success: true,
         })
 
 
 
-    }catch(err){
-        
-        res.json({
-            message:err.message || "User already exists with this email",
-            error:true,
-            success:false,
+    } catch (err) {
+        res.status(400).json({
+            message: err.message || err,
+            error: true,
+            success: false,
         })
-
-
     }
 }
 
-module.exports = {userSignUpController}
+module.exports = { userSignUpController }
