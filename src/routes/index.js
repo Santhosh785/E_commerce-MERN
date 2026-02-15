@@ -7,44 +7,49 @@ import Signup from "../pages/Signup"
 import Adminpanel from "../pages/Adminpanel"
 import Allusers from "../pages/Allusers"
 import Allproducts from "../pages/Allproducts"
+import Cart from "../pages/Cart"
 
 const router = createBrowserRouter([
     {
-        path : "/",
-        element : <App/>,
-        children : [
+        path: "/",
+        element: <App />,
+        children: [
             {
-                index : true,
-                element : <Home/>
+                index: true,
+                element: <Home />
             },
             {
-                path : "login",
-                element : <Login/>
+                path: "cart",
+                element: <Cart />
             },
             {
-                path : "Forgot-password",
-                element : <Forgotpassword/>
+                path: "login",
+                element: <Login />
             },
             {
-                path : "signup",
-                element : <Signup/>
+                path: "Forgot-password",
+                element: <Forgotpassword />
             },
             {
-                path : "admin-panel",
-                element : <Adminpanel/>,
-                children : [
+                path: "signup",
+                element: <Signup />
+            },
+            {
+                path: "admin-panel",
+                element: <Adminpanel />,
+                children: [
                     {
-                        path : "all-users",
-                        element : <Allusers/>
+                        path: "all-users",
+                        element: <Allusers />
                     },
                     {
-                        path : "all-products",
-                        element : <Allproducts/>
+                        path: "all-products",
+                        element: <Allproducts />
                     }
                 ]
             },
-                
-            
+
+
         ]
     }
 ])

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import ROLE from '../common/role'
 import { IoMdClose } from "react-icons/io";
 import summaryAPI from '../common';
+import { toast } from 'react-toastify';
 
-const ChangeUserRole = ({ name, email, role, userId, onClose }) => {
+const ChangeUserRole = ({ name, email, role, userId, onClose, callApi }) => {
 
   const [selectedRole, setSelectedRole] = useState(role)
 
@@ -25,18 +26,19 @@ const ChangeUserRole = ({ name, email, role, userId, onClose }) => {
     const data = await response.json()
 
     if (data.success) {
-      alert("Role updated successfully")
+      toast.success(data.message)
       onClose()
+      callApi()
     }
 
     if (data.error) {
-      alert(data.message)
+      toast.error(data.message)
     }
   }
 
   return (
-    <div className='absolute inset-0 flex items-center justify-center bg-black bg-opacity-40'>
-      <div className='bg-white p-6 rounded shadow-lg w-96'>
+    <div className='fixed top-0 bottom-0 left-0 right-0 w-full h-full z-10 flex items-center justify-center bg-slate-200 bg-opacity-50'>
+      <div className='bg-white p-4 pb-6 rounded shadow-lg w-full max-w-sm'>
 
         <button className="block ml-auto" onClick={onClose}>
           <IoMdClose className="text-2xl" />
@@ -60,12 +62,20 @@ const ChangeUserRole = ({ name, email, role, userId, onClose }) => {
           ))}
         </select>
 
-        <button
-          onClick={UpdateRole}
-          className='bg-blue-500 text-white px-4 py-2 rounded mt-4'
-        >
-          Update Role
-        </button>
+        <div className='flex items-center justify-between mt-4'>
+          <button
+            onClick={UpdateRole}
+            className='bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full transition-all'
+          >
+            Update Role
+          </button>
+          <button
+            onClick={onClose}
+            className='border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full transition-all'
+          >
+            Cancel
+          </button>
+        </div>
 
       </div>
     </div>
