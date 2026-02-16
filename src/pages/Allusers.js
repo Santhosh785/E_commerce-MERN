@@ -43,7 +43,7 @@ const Allusers = () => {
     <div className='p-4'>
       <table className="w-full border-collapse border border-gray-300 bg-white userTable">
         <thead>
-          <tr className='bg-black text-white'>
+          <tr className='bg-white text-black'>
             <th>S.No</th>
             <th>User ID</th>
             <th>Name</th>
